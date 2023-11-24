@@ -1,0 +1,57 @@
+<!-- /**Rotate array by k
+  
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var rotate = function(nums, k) {
+    //Ensure k is within the range
+    k=k%nums.length;
+    //reverse the entire array
+    reverse(nums, 0, nums.length-1);
+    //reverse the first k elements
+    reverse(nums, 0, k-1);
+    //reverse the rest of elements
+    reverse(nums, k, nums.length-1)
+    //helper function to reverse array within the specified range
+    function reverse(nums, start, end){
+     while(start < end){
+     const temp=nums[start];
+     nums[start] = nums[end];
+     nums[end]=temp;
+     start++;
+     end--
+      }
+    }
+}; -->
+
+
+<!-- /**
+  Products of Arrays Except Itself
+* @param {number[]} nums
+* @return {number[]}
+*/
+var productExceptSelf = function(nums) {
+   const n = nums.length;
+   ////Initialize arrays to store prefix and suffix products
+   const prefixProducts = new Array(n).fill(1);
+   const suffixProducts = new Array(n).fill(1);
+   let prefix = 1;
+   let suffix = 1;
+   // Calculate prefix products
+   for (let i = 0; i < n; i++) {
+       prefixProducts[i] = prefix;
+       prefix *= nums[i];
+   }
+   // Calculate suffix products
+   for (let i = n - 1; i >= 0; i--) {
+       suffixProducts[i] = suffix;
+       suffix *= nums[i];
+   }
+   // Calculate the final result by multiplying prefix and suffix
+   const result = [];
+   for (let i = 0; i < n; i++) {
+       result[i] = prefixProducts[i] * suffixProducts[i];
+   }
+   return result;
+}; -->
